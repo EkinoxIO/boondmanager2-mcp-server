@@ -491,7 +491,7 @@ describe("startHttpTransport (integration)", () => {
     const json = (await res.json()) as {
       result?: { serverInfo?: { name?: string } };
     };
-    expect(json.result?.serverInfo?.name).toBe("boondmanager-mcp-server");
+    expect(json.result?.serverInfo?.name).toBe("boondmanager2-mcp-server");
   });
 
   it("accepts MCP initialize without Bearer token in staticAuth mode", async () => {
@@ -523,7 +523,7 @@ describe("startHttpTransport (integration)", () => {
     });
     expect(res.status).toBe(200);
     const json = (await res.json()) as { result?: { serverInfo?: { name?: string } } };
-    expect(json.result?.serverInfo?.name).toBe("boondmanager-mcp-server");
+    expect(json.result?.serverInfo?.name).toBe("boondmanager2-mcp-server");
   });
 
   it("still rejects without Bearer when staticAuth is false (default)", async () => {

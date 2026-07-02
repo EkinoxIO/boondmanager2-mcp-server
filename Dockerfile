@@ -2,7 +2,7 @@
 # Multi-stage build for the BoondManager MCP server.
 # The runtime image starts the Streamable HTTP transport, suitable for use as
 # an MCP gateway (LobeChat, custom MCP host, etc.). For stdio usage, prefer
-# `npx boondmanager-mcp-server` directly on the host — Docker's stdio mapping
+# `npx boondmanager2-mcp-server` directly on the host — Docker's stdio mapping
 # is awkward and you don't gain anything by containerising it.
 #
 # Authentication model (HTTP transport): the MCP server is an OAuth2
@@ -42,9 +42,9 @@ FROM node:26-alpine@sha256:725aeba2364a9b16beae49e180d83bd597dbd0b15c47f1f28875c
 WORKDIR /app
 
 # OCI image annotations — make the image discoverable in registries.
-LABEL org.opencontainers.image.title="boondmanager-mcp-server" \
+LABEL org.opencontainers.image.title="boondmanager2-mcp-server" \
       org.opencontainers.image.description="MCP server for the BoondManager API (HTTP gateway mode, OAuth2 protected resource)" \
-      org.opencontainers.image.source="https://github.com/fauguste/boondmanager-mcp-server" \
+      org.opencontainers.image.source="https://github.com/EkinoxIO/boondmanager2-mcp-server" \
       org.opencontainers.image.licenses="Apache-2.0" \
       org.opencontainers.image.vendor="Silamir"
 

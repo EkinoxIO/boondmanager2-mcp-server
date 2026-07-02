@@ -135,7 +135,7 @@ BOOND_MCP_READ_ONLY=true
   "mcpServers": {
     "boondmanager": {
       "command": "npx",
-      "args": ["-y", "boondmanager-mcp-server"],
+      "args": ["-y", "boondmanager2-mcp-server"],
       "env": {
         "BOOND_USER_TOKEN": "…",
         "BOOND_CLIENT_TOKEN": "…",

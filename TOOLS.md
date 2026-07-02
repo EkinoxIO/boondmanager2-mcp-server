@@ -3,7 +3,7 @@
 > Auto-generated from the server registrations. Do not edit by hand.
 > Regenerate with `npm run docs:tools` (CI fails if this file is stale).
 
-**180 tools** across **38 domains** · **11 prompts** · **22 resources**.
+**181 tools** across **38 domains** · **11 prompts** · **22 resources**.
 
 Hint legend: `read` (readOnlyHint), `write` (creates/updates), `delete` (destructiveHint), `idempotent` (idempotentHint), `open-world` (openWorldHint, e.g. paginated keyword search).
 
@@ -334,13 +334,14 @@ Hint legend: `read` (readOnlyHint), `write` (creates/updates), `delete` (destruc
 | `boond_threads_get` | Détails d'un(e) fil de discussion | read · idempotent |
 | `boond_threads_search` | Rechercher des fils de discussion | read · idempotent · open-world |
 
-### timesheets (3)
+### timesheets (4)
 
 | Tool | Title | Hints |
 |---|---|---|
 | `boond_timesheets_create` | Créer une feuille de temps | write |
 | `boond_timesheets_get` | Détails d'une feuille de temps | read · idempotent |
 | `boond_timesheets_search` | Rechercher des feuilles de temps | read · idempotent · open-world |
+| `boond_timesheets_update` | Modifier un(e) feuille de temps | write · idempotent |
 
 ### todolists (2)
 

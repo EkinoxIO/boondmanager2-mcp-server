@@ -1,29 +1,29 @@
 # BoondManager MCP Server
 
-[![CI](https://github.com/fauguste/boondmanager-mcp-server/actions/workflows/ci.yml/badge.svg)](https://github.com/fauguste/boondmanager-mcp-server/actions/workflows/ci.yml)
-[![CodeQL](https://github.com/fauguste/boondmanager-mcp-server/actions/workflows/codeql.yml/badge.svg)](https://github.com/fauguste/boondmanager-mcp-server/actions/workflows/codeql.yml)
-[![npm version](https://img.shields.io/npm/v/boondmanager-mcp-server.svg)](https://www.npmjs.com/package/boondmanager-mcp-server)
-[![npm downloads](https://img.shields.io/npm/dm/boondmanager-mcp-server.svg)](https://www.npmjs.com/package/boondmanager-mcp-server)
-[![Node.js](https://img.shields.io/node/v/boondmanager-mcp-server.svg)](https://nodejs.org/)
+[![CI](https://github.com/EkinoxIO/boondmanager2-mcp-server/actions/workflows/ci.yml/badge.svg)](https://github.com/EkinoxIO/boondmanager2-mcp-server/actions/workflows/ci.yml)
+[![CodeQL](https://github.com/EkinoxIO/boondmanager2-mcp-server/actions/workflows/codeql.yml/badge.svg)](https://github.com/EkinoxIO/boondmanager2-mcp-server/actions/workflows/codeql.yml)
+[![npm version](https://img.shields.io/npm/v/boondmanager2-mcp-server.svg)](https://www.npmjs.com/package/boondmanager2-mcp-server)
+[![npm downloads](https://img.shields.io/npm/dm/boondmanager2-mcp-server.svg)](https://www.npmjs.com/package/boondmanager2-mcp-server)
+[![Node.js](https://img.shields.io/node/v/boondmanager2-mcp-server.svg)](https://nodejs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-strict-blue.svg)](https://www.typescriptlang.org/)
 [![MCP Registry](https://img.shields.io/badge/MCP-Registry-blue)](https://registry.modelcontextprotocol.io/)
-[![Docker Hub](https://img.shields.io/docker/v/fauguste/boondmanager-mcp-server?label=Docker%20Hub&logo=docker&color=2496ED)](https://hub.docker.com/r/fauguste/boondmanager-mcp-server)
-[![GHCR](https://img.shields.io/badge/GHCR-fauguste%2Fboondmanager--mcp--server-181717?logo=github)](https://github.com/fauguste/boondmanager-mcp-server/pkgs/container/boondmanager-mcp-server)
+[![Docker Hub](https://img.shields.io/docker/v/EkinoxIO/boondmanager2-mcp-server?label=Docker%20Hub&logo=docker&color=2496ED)](https://hub.docker.com/r/EkinoxIO/boondmanager2-mcp-server)
+[![GHCR](https://img.shields.io/badge/GHCR-EkinoxIO%2Fboondmanager2--mcp--server-181717?logo=github)](https://github.com/EkinoxIO/boondmanager2-mcp-server/pkgs/container/boondmanager2-mcp-server)
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 **Installation 1-clic :**
 
-[![Add to Cursor](https://img.shields.io/badge/Add%20to-Cursor-000000?logo=cursor&logoColor=white)](https://cursor.com/install-mcp?name=boondmanager&config=eyJjb21tYW5kIjoibnB4IiwiYXJncyI6WyIteSIsImJvb25kbWFuYWdlci1tY3Atc2VydmVyIl19)
-[![Install in VS Code](https://img.shields.io/badge/Install-VS%20Code-0098FF?logo=visualstudiocode&logoColor=white)](https://insiders.vscode.dev/redirect/mcp/install?name=boondmanager&config=%7B%22command%22%3A%22npx%22%2C%22args%22%3A%5B%22-y%22%2C%22boondmanager-mcp-server%22%5D%7D)
-[![Install in VS Code Insiders](https://img.shields.io/badge/Install-VS%20Code%20Insiders-24bfa5?logo=visualstudiocode&logoColor=white)](https://insiders.vscode.dev/redirect/mcp/install?name=boondmanager&config=%7B%22command%22%3A%22npx%22%2C%22args%22%3A%5B%22-y%22%2C%22boondmanager-mcp-server%22%5D%7D&quality=insiders)
+[![Add to Cursor](https://img.shields.io/badge/Add%20to-Cursor-000000?logo=cursor&logoColor=white)](https://cursor.com/install-mcp?name=boondmanager&config=eyJjb21tYW5kIjoibnB4IiwiYXJncyI6WyIteSIsImJvb25kbWFuYWdlcjItbWNwLXNlcnZlciJdfQ==)
+[![Install in VS Code](https://img.shields.io/badge/Install-VS%20Code-0098FF?logo=visualstudiocode&logoColor=white)](https://insiders.vscode.dev/redirect/mcp/install?name=boondmanager&config=%7B%22command%22%3A%22npx%22%2C%22args%22%3A%5B%22-y%22%2C%22boondmanager2-mcp-server%22%5D%7D)
+[![Install in VS Code Insiders](https://img.shields.io/badge/Install-VS%20Code%20Insiders-24bfa5?logo=visualstudiocode&logoColor=white)](https://insiders.vscode.dev/redirect/mcp/install?name=boondmanager&config=%7B%22command%22%3A%22npx%22%2C%22args%22%3A%5B%22-y%22%2C%22boondmanager2-mcp-server%22%5D%7D&quality=insiders)
 
-<a href="https://glama.ai/mcp/servers/fauguste/boondmanager-mcp-server"><img src="https://glama.ai/mcp/servers/fauguste/boondmanager-mcp-server/badge" alt="Glama" width="180" /></a>
+<a href="https://glama.ai/mcp/servers/EkinoxIO/boondmanager2-mcp-server"><img src="https://glama.ai/mcp/servers/EkinoxIO/boondmanager2-mcp-server/badge" alt="Glama" width="180" /></a>
 
 > **LM Studio**, **Goose** et **Gemini CLI** s'installent via leur procédure dédiée (deeplink natif ou commande) — voir la section [Installation](#installation). GitHub ne rend pas cliquables les liens à schéma non-HTTP (`lmstudio://`, `goose://`), c'est pourquoi ils n'ont pas de bouton 1-clic ici.
 
 Serveur MCP (Model Context Protocol) pour l'API BoondManager, permettant a Claude (Desktop, Cowork, Code) de rechercher, consulter, creer et modifier des enregistrements dans votre instance BoondManager.
 
-**180 outils** couvrant **38 domaines** de l'API BoondManager. Voir [TOOLS.md](./TOOLS.md) pour le catalogue auto-généré (outils + prompts + ressources).
+**181 outils** couvrant **38 domaines** de l'API BoondManager. Voir [TOOLS.md](./TOOLS.md) pour le catalogue auto-généré (outils + prompts + ressources).
 
 > **Sorties structurées.** En plus du texte lisible, les outils `search`, `create`, `update` et `delete` renvoient un `structuredContent` conforme à un `outputSchema` MCP : `search` → `{ total?, count, items[] }` (résumés compacts, pas les ressources JSON:API complètes), `create`/`update` → `{ id?, type? }`, `delete` → `{ id, deleted, reason? }`. Les clients MCP qui exploitent les sorties structurées obtiennent une référence d'entité fiable pour chaîner les appels. Les outils `get` restent en texte seul (leur texte est déjà du JSON exploitable).
 
@@ -65,7 +65,7 @@ Serveur MCP (Model Context Protocol) pour l'API BoondManager, permettant a Claud
 |---------|--------|------------|
 | **Absences** | 5 | CRUD complet |
 | **Planning absences** | 1 | search (vue globale) |
-| **Feuilles de temps** | 3 | search, get, resource timesheets |
+| **Feuilles de temps** | 4 | search, get, update, resource timesheets |
 | **Contrats** | 2 | get, create |
 | **Avantages** | 2 | search, get |
 
@@ -214,26 +214,26 @@ Exemples d'invocation des prompts ressources / competences / CV :
 
 ### Claude Desktop (one-click)
 
-Telechargez le fichier `.mcpb` depuis la [derniere release GitHub](https://github.com/fauguste/boondmanager-mcp-server/releases/latest), puis dans Claude Desktop : **Fichier > Installer une extension...** et selectionnez le fichier. Les identifiants sont demandes a l'installation et stockes de maniere chiffree (Keychain macOS / Credential Manager Windows).
+Telechargez le fichier `.mcpb` depuis la [derniere release GitHub](https://github.com/EkinoxIO/boondmanager2-mcp-server/releases/latest), puis dans Claude Desktop : **Fichier > Installer une extension...** et selectionnez le fichier. Les identifiants sont demandes a l'installation et stockes de maniere chiffree (Keychain macOS / Credential Manager Windows).
 
 ### Claude Code
 
 ```bash
 # Avec un token API (recommande)
 claude mcp add --transport stdio --env BOOND_API_TOKEN=votre_token_jwt \
-  boondmanager -- npx -y boondmanager-mcp-server
+  boondmanager -- npx -y boondmanager2-mcp-server
 
 # Avec BasicAuth
 claude mcp add --transport stdio \
   --env BOOND_USER=votre_login \
   --env BOOND_PASSWORD=votre_mot_de_passe \
-  boondmanager -- npx -y boondmanager-mcp-server
+  boondmanager -- npx -y boondmanager2-mcp-server
 ```
 
 > **Windows** : ajoutez `cmd /c` avant `npx` :
 > ```bash
 > claude mcp add --transport stdio --env BOOND_API_TOKEN=votre_token \
->   boondmanager -- cmd /c npx -y boondmanager-mcp-server
+>   boondmanager -- cmd /c npx -y boondmanager2-mcp-server
 > ```
 
 Pour rendre le serveur disponible dans tous vos projets, ajoutez `--scope user` :
@@ -241,7 +241,7 @@ Pour rendre le serveur disponible dans tous vos projets, ajoutez `--scope user` 
 ```bash
 claude mcp add --transport stdio --scope user \
   --env BOOND_API_TOKEN=votre_token_jwt \
-  boondmanager -- npx -y boondmanager-mcp-server
+  boondmanager -- npx -y boondmanager2-mcp-server
 ```
 
 ### Claude Code - Configuration partagee en equipe
@@ -254,7 +254,7 @@ Ajoutez un fichier `.mcp.json` a la racine de votre projet (a commiter dans git)
     "boondmanager": {
       "type": "stdio",
       "command": "npx",
-      "args": ["-y", "boondmanager-mcp-server"],
+      "args": ["-y", "boondmanager2-mcp-server"],
       "env": {
         "BOOND_API_TOKEN": "${BOOND_API_TOKEN}"
       }
@@ -281,7 +281,7 @@ Les administrateurs peuvent deployer le serveur MCP pour tous les utilisateurs v
     "boondmanager": {
       "type": "stdio",
       "command": "npx",
-      "args": ["-y", "boondmanager-mcp-server"],
+      "args": ["-y", "boondmanager2-mcp-server"],
       "env": {
         "BOOND_API_TOKEN": "${BOOND_API_TOKEN}",
         "BOOND_BASE_URL": "https://votre-instance.boondmanager.com/api"
@@ -315,7 +315,7 @@ Ajoutez dans votre fichier de configuration Claude :
   "mcpServers": {
     "boondmanager": {
       "command": "npx",
-      "args": ["-y", "boondmanager-mcp-server"],
+      "args": ["-y", "boondmanager2-mcp-server"],
       "env": {
         "BOOND_API_TOKEN": "votre_token_jwt"
       }
@@ -327,38 +327,38 @@ Ajoutez dans votre fichier de configuration Claude :
 ### Via npm
 
 ```bash
-npx boondmanager-mcp-server
+npx boondmanager2-mcp-server
 ```
 
 Ou installation globale :
 
 ```bash
-npm install -g boondmanager-mcp-server
-boondmanager-mcp-server
+npm install -g boondmanager2-mcp-server
+boondmanager2-mcp-server
 ```
 
 ### Depuis les sources
 
 ```bash
-git clone https://github.com/fauguste/boondmanager-mcp-server.git
-cd boondmanager-mcp-server
+git clone https://github.com/EkinoxIO/boondmanager2-mcp-server.git
+cd boondmanager2-mcp-server
 npm install
 npm run build
 ```
 
 ### Smithery
 
-Le serveur est aussi disponible sur [Smithery](https://smithery.ai/server/@fauguste/boondmanager-mcp-server). La configuration est dans `smithery.yaml` à la racine du repo : Smithery propose une UI avec les champs d'authentification (JWT auto / JWT pré-construit / BasicAuth) et installe le serveur via `npx`.
+Le serveur est aussi disponible sur [Smithery](https://smithery.ai/server/@EkinoxIO/boondmanager2-mcp-server). La configuration est dans `smithery.yaml` à la racine du repo : Smithery propose une UI avec les champs d'authentification (JWT auto / JWT pré-construit / BasicAuth) et installe le serveur via `npx`.
 
 ### LobeChat / LobeHub
 
-Le serveur est listé sur le [marketplace MCP de LobeHub](https://lobehub.com/mcp/fauguste-boondmanager-mcp-server). Dans LobeChat (auto-hebergé ou cloud), ajouter le MCP via **Reglages > Plugins > MCP > Ajouter** avec :
+Le serveur est listé sur le [marketplace MCP de LobeHub](https://lobehub.com/mcp/EkinoxIO-boondmanager2-mcp-server). Dans LobeChat (auto-hebergé ou cloud), ajouter le MCP via **Reglages > Plugins > MCP > Ajouter** avec :
 
 ```json
 {
   "name": "boondmanager",
   "command": "npx",
-  "args": ["-y", "boondmanager-mcp-server"],
+  "args": ["-y", "boondmanager2-mcp-server"],
   "env": {
     "BOOND_USER_TOKEN": "<votre_user_token>",
     "BOOND_CLIENT_TOKEN": "<votre_client_token>",
@@ -371,14 +371,14 @@ Ou utiliser le transport HTTP (voir section [Transports](#transports)) pour un d
 
 ### Cursor
 
-Cliquez sur le badge **[Add to Cursor](https://cursor.com/install-mcp?name=boondmanager&config=eyJjb21tYW5kIjoibnB4IiwiYXJncyI6WyIteSIsImJvb25kbWFuYWdlci1tY3Atc2VydmVyIl19)** en haut du README (ou ajoutez le serveur manuellement dans **Settings > MCP > Add new MCP server**). Renseignez ensuite l'authentification en ajoutant un bloc `env` au serveur dans `~/.cursor/mcp.json` :
+Cliquez sur le badge **[Add to Cursor](https://cursor.com/install-mcp?name=boondmanager&config=eyJjb21tYW5kIjoibnB4IiwiYXJncyI6WyIteSIsImJvb25kbWFuYWdlcjItbWNwLXNlcnZlciJdfQ==)** en haut du README (ou ajoutez le serveur manuellement dans **Settings > MCP > Add new MCP server**). Renseignez ensuite l'authentification en ajoutant un bloc `env` au serveur dans `~/.cursor/mcp.json` :
 
 ```json
 {
   "mcpServers": {
     "boondmanager": {
       "command": "npx",
-      "args": ["-y", "boondmanager-mcp-server"],
+      "args": ["-y", "boondmanager2-mcp-server"],
       "env": {
         "BOOND_API_TOKEN": "votre_token_jwt"
       }
@@ -389,7 +389,7 @@ Cliquez sur le badge **[Add to Cursor](https://cursor.com/install-mcp?name=boond
 
 ### VS Code (GitHub Copilot / agent MCP)
 
-Cliquez sur le badge **[Install in VS Code](https://insiders.vscode.dev/redirect/mcp/install?name=boondmanager&config=%7B%22command%22%3A%22npx%22%2C%22args%22%3A%5B%22-y%22%2C%22boondmanager-mcp-server%22%5D%7D)** en haut du README, ou ajoutez le serveur a `.vscode/mcp.json` (par projet) ou a votre `settings.json` utilisateur :
+Cliquez sur le badge **[Install in VS Code](https://insiders.vscode.dev/redirect/mcp/install?name=boondmanager&config=%7B%22command%22%3A%22npx%22%2C%22args%22%3A%5B%22-y%22%2C%22boondmanager2-mcp-server%22%5D%7D)** en haut du README, ou ajoutez le serveur a `.vscode/mcp.json` (par projet) ou a votre `settings.json` utilisateur :
 
 ```json
 {
@@ -397,7 +397,7 @@ Cliquez sur le badge **[Install in VS Code](https://insiders.vscode.dev/redirect
     "boondmanager": {
       "type": "stdio",
       "command": "npx",
-      "args": ["-y", "boondmanager-mcp-server"],
+      "args": ["-y", "boondmanager2-mcp-server"],
       "env": {
         "BOOND_API_TOKEN": "${input:boond_api_token}"
       }
@@ -415,7 +415,7 @@ Dans LM Studio : **Program > Install > Edit `mcp.json`** et ajoutez :
   "mcpServers": {
     "boondmanager": {
       "command": "npx",
-      "args": ["-y", "boondmanager-mcp-server"],
+      "args": ["-y", "boondmanager2-mcp-server"],
       "env": {
         "BOOND_API_TOKEN": "votre_token_jwt"
       }
@@ -426,10 +426,10 @@ Dans LM Studio : **Program > Install > Edit `mcp.json`** et ajoutez :
 
 ### Goose
 
-Ajoutez une extension de type **STDIO** dans **Settings > Extensions > Add** avec la commande `npx -y boondmanager-mcp-server` et la variable d'environnement `BOOND_API_TOKEN`. En CLI :
+Ajoutez une extension de type **STDIO** dans **Settings > Extensions > Add** avec la commande `npx -y boondmanager2-mcp-server` et la variable d'environnement `BOOND_API_TOKEN`. En CLI :
 
 ```bash
-goose session --with-extension "npx -y boondmanager-mcp-server"
+goose session --with-extension "npx -y boondmanager2-mcp-server"
 ```
 
 ### Gemini CLI
@@ -437,7 +437,7 @@ goose session --with-extension "npx -y boondmanager-mcp-server"
 Le depot embarque un manifeste d'extension Gemini CLI (`gemini-extension.json`). Installez l'extension directement depuis GitHub :
 
 ```bash
-gemini extensions install https://github.com/fauguste/boondmanager-mcp-server
+gemini extensions install https://github.com/EkinoxIO/boondmanager2-mcp-server
 ```
 
 Definissez ensuite l'authentification dans votre environnement (Gemini interpole `${VAR}` au demarrage) :
@@ -587,7 +587,7 @@ export MCP_HTTP_PATH=/mcp           # defaut: /mcp
 # la discovery annonce la bonne URL publique.
 export MCP_HTTP_PUBLIC_URL=https://mcp.votre-domaine.com/mcp
 
-npx boondmanager-mcp-server
+npx boondmanager2-mcp-server
 # 🚀 BoondManager MCP Server running (streamable HTTP transport)
 # 📡 Endpoint: http://0.0.0.0:3000/mcp
 # 🔑 Mode: stateless
@@ -655,8 +655,8 @@ Une image Docker prete a l'emploi est publiee a chaque release sur deux registre
 
 | Registre | Image | Page |
 |---|---|---|
-| GitHub Container Registry | `ghcr.io/fauguste/boondmanager-mcp-server` | [github.com/fauguste/boondmanager-mcp-server/pkgs/container/boondmanager-mcp-server](https://github.com/fauguste/boondmanager-mcp-server/pkgs/container/boondmanager-mcp-server) |
-| Docker Hub | `docker.io/fauguste/boondmanager-mcp-server` | [hub.docker.com/r/fauguste/boondmanager-mcp-server](https://hub.docker.com/r/fauguste/boondmanager-mcp-server) |
+| GitHub Container Registry | `ghcr.io/EkinoxIO/boondmanager2-mcp-server` | [github.com/EkinoxIO/boondmanager2-mcp-server/pkgs/container/boondmanager2-mcp-server](https://github.com/EkinoxIO/boondmanager2-mcp-server/pkgs/container/boondmanager2-mcp-server) |
+| Docker Hub | `docker.io/EkinoxIO/boondmanager2-mcp-server` | [hub.docker.com/r/EkinoxIO/boondmanager2-mcp-server](https://hub.docker.com/r/EkinoxIO/boondmanager2-mcp-server) |
 
 Memes digests, memes tags — choisissez celui qui s'aligne avec votre tooling. L'image demarre par defaut en transport HTTP, sur le port 3000, sur l'interface `0.0.0.0`. **Aucun volume, aucun secret a stocker** — le serveur est stateless par construction.
 
@@ -666,14 +666,14 @@ docker run -d --restart unless-stopped \
   -p 127.0.0.1:3000:3000 \
   -e MCP_HTTP_PUBLIC_URL=https://mcp.votre-domaine.com/mcp \
   --name boondmanager-mcp \
-  ghcr.io/fauguste/boondmanager-mcp-server:latest
+  ghcr.io/EkinoxIO/boondmanager2-mcp-server:latest
 
 # Ou via Docker Hub (anonyme)
 docker run -d --restart unless-stopped \
   -p 127.0.0.1:3000:3000 \
   -e MCP_HTTP_PUBLIC_URL=https://mcp.votre-domaine.com/mcp \
   --name boondmanager-mcp \
-  fauguste/boondmanager-mcp-server:latest
+  EkinoxIO/boondmanager2-mcp-server:latest
 ```
 
 Tags disponibles sur les deux registres : `:latest`, `:X`, `:X.Y`, `:X.Y.Z` pour chaque release stable (la version exacte est recommandee pour la prod). Les **prereleases** (par exemple `:2.0.0-alpha`) sont publiees **uniquement sous leur tag pinne** — ni `:latest`, ni `:X`, ni `:X.Y` ne bougent. Variables d'environnement supportees : voir [Configuration](#configuration) et [Transports](#transports).
@@ -749,7 +749,7 @@ Une fois configure, vous pouvez demander a Claude :
 ## Architecture
 
 ```
-boondmanager-mcp-server/
+boondmanager2-mcp-server/
 ├── src/
 │   ├── index.ts              # Point d'entree MCP (selection du transport)
 │   ├── server.ts             # Factory createMcpServer() + liste des domaines

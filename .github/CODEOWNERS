@@ -1,8 +1,8 @@
 # Global owner
-* @fauguste
+* @vlandeau
 
 # Source code
-/src/ @fauguste
+/src/ @vlandeau
 
 # CI/CD configuration
-/.github/ @fauguste
+/.github/ @vlandeau

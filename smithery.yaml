@@ -47,7 +47,7 @@ startCommand:
   commandFunction: |-
     config => ({
       command: 'npx',
-      args: ['-y', 'boondmanager-mcp-server'],
+      args: ['-y', 'boondmanager2-mcp-server'],
       env: {
         ...(config.boondBaseUrl ? { BOOND_BASE_URL: config.boondBaseUrl } : {}),
         ...(config.boondUserToken ? { BOOND_USER_TOKEN: config.boondUserToken } : {}),

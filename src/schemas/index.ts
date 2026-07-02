@@ -977,6 +977,119 @@ export const TimesheetGetSchema = z
   })
   .strict();
 
+// PUT /times-reports/{id}. The body is a nested JSON:API `attributes` object
+// (not flat scalars): `regularTimes`/`exceptionalTimes` items each accept
+// either a "create" variant (no `id`) or an "update" variant (`id` required),
+// and `delivery`/`batch`/`project` sub-fields are `oneOf({ data: null } | { id })`
+// relationship links — except `exceptionalTimes.delivery`/`.project`, which are
+// plain required `{ id }` objects (no "no relation" option). Modeled literally
+// from BoondManager's `schemas/timesReports/bodyPut.json`.
+const timesReportWorkUnitTypeSchema = z
+  .object({
+    reference: z
+      .number()
+      .int()
+      .min(1)
+      .describe("Référence du type d'unité de travail (dictionnaire setting.typeOf / TAB_TYPEHEURE)"),
+  })
+  .strict();
+
+const timesReportNoRelationSchema = z.object({ data: z.null() }).strict();
+
+const timesReportIdRelationSchema = (description: string) =>
+  z
+    .object({
+      id: z
+        .string()
+        .regex(/^[1-9][0-9]*$/)
+        .describe(description),
+    })
+    .strict();
+
+/** `oneOf({ data: null } | { id })` — no link, or linked to an entity by ID. */
+const timesReportOptionalRelation = (description: string) =>
+  z.union([timesReportNoRelationSchema, timesReportIdRelationSchema(description)]);
+
+const timesReportDateSchema = z
+  .string()
+  .regex(/^$|^\d{4}-\d{2}-\d{2}$/)
+  .describe("Date au format YYYY-MM-DD");
+
+// `row`: >=1 met à jour la ligne existante, <=-1 en crée une nouvelle (0 est interdit par l'API).
+const timesReportRowSchema = z.union([
+  z.number().int().min(1).describe("Met à jour cette ligne existante"),
+  z.number().int().max(-1).describe("Crée une nouvelle ligne"),
+]);
+
+const regularTimeBaseShape = {
+  startDate: timesReportDateSchema,
+  duration: z.number().describe("Durée du temps régulier"),
+  row: timesReportRowSchema,
+  workUnitType: timesReportWorkUnitTypeSchema,
+  delivery: timesReportOptionalRelation("ID de la mission (delivery) dont dépend ce temps"),
+  batch: timesReportOptionalRelation("ID du lot dont dépend ce temps"),
+  project: timesReportOptionalRelation("ID du projet dont dépend ce temps"),
+};
+
+const RegularTimeSchema = z.union([
+  z.object(regularTimeBaseShape).strict().describe("Créer un temps régulier"),
+  z
+    .object({ id: z.string().min(1).describe("ID de la ligne de temps à modifier"), ...regularTimeBaseShape })
+    .strict()
+    .describe("Mettre à jour un temps régulier"),
+]);
+
+const exceptionalTimeBaseShape = {
+  startDate: timesReportDateSchema,
+  endDate: timesReportDateSchema,
+  recovering: z.boolean().optional().describe("Temps récupérable (RTT...)"),
+  description: z.string().max(1000).describe("Description du temps exceptionnel"),
+  workUnitType: timesReportWorkUnitTypeSchema,
+  delivery: timesReportIdRelationSchema("ID de la mission (delivery) dont dépend ce temps exceptionnel"),
+  batch: timesReportOptionalRelation("ID du lot dont dépend ce temps exceptionnel"),
+  project: timesReportIdRelationSchema("ID du projet dont dépend ce temps exceptionnel"),
+};
+
+const ExceptionalTimeSchema = z.union([
+  z.object(exceptionalTimeBaseShape).strict().describe("Créer un temps exceptionnel"),
+  z
+    .object({ id: z.string().min(1).describe("ID du temps exceptionnel à modifier"), ...exceptionalTimeBaseShape })
+    .strict()
+    .describe("Mettre à jour un temps exceptionnel"),
+]);
+
+const WorkplaceTimeSchema = z
+  .object({
+    id: z.string().min(1).describe("ID de la ligne de lieu de travail (TAB_TEMPSLIEUX)"),
+    startDate: timesReportDateSchema,
+    duration: z.number().describe("Durée passée sur ce lieu"),
+    row: z.number().int().describe("ID de ligne existante (positif) ou valeur ≤ 0 pour en créer une nouvelle"),
+    workplaceType: z
+      .object({
+        reference: z.number().int().min(1).describe("Référence du type de lieu (dictionnaire TAB_TYPELIEU)"),
+        name: z.string().max(250).describe("Nom du type de lieu"),
+      })
+      .strict(),
+  })
+  .strict();
+
+export const TimesReportUpdateSchema = z
+  .object({
+    id: z.string().min(1).describe("ID de la feuille de temps à modifier"),
+    workUnitRate: z.number().optional().describe("Taux horaire"),
+    informationComments: z.string().max(500).optional().describe("Commentaires"),
+    regularTimes: z.array(RegularTimeSchema).optional().describe("Temps réguliers à créer et/ou mettre à jour"),
+    exceptionalTimes: z
+      .array(ExceptionalTimeSchema)
+      .optional()
+      .describe("Temps exceptionnels (absences, récupération...) à créer et/ou mettre à jour"),
+    workplaceTimes: z
+      .array(WorkplaceTimeSchema)
+      .optional()
+      .describe("Lieux de travail associés aux temps (row ≤ 0 pour créer une nouvelle ligne)"),
+  })
+  .strict();
+
 // ---- Project schemas ----
 
 export const ProjectCreateSchema = z

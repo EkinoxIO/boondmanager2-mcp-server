@@ -1,8 +1,13 @@
 import type { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
-import { ResourceTimesheetSchema, TimesheetSearchSchema, TimesheetGetSchema } from "../schemas/index.js";
+import {
+  ResourceTimesheetSchema,
+  TimesheetSearchSchema,
+  TimesheetGetSchema,
+  TimesReportUpdateSchema,
+} from "../schemas/index.js";
 import type { ResourceTimesheetInput, TimesheetSearchInput, TimesheetGetInput } from "../schemas/index.js";
 import { apiRequest, buildSearchQuery, formatDetailResponse } from "../services/boond-client.js";
-import { buildJsonApiBody } from "./crud-factory.js";
+import { buildJsonApiBody, registerUpdateTool } from "./crud-factory.js";
 import { CHARACTER_LIMIT } from "../constants.js";
 import type { JsonApiResponse } from "../types.js";
 import { z } from "zod";
@@ -23,6 +28,20 @@ const TimesheetCreateSchema = z
     note: z.string().optional().describe("Notes"),
   })
   .strict();
+
+const REPORT_OPTS = {
+  entityName: "feuille de temps",
+  entityNamePlural: "feuilles de temps",
+  apiPath: "/times-reports",
+  prefix: "boond_timesheets",
+};
+
+/** The PUT body is already a nested `attributes` bag (regularTimes/exceptionalTimes/
+ * workplaceTimes arrays) — no relationships to attach, unlike create's resource/project. */
+function buildTimesReportBody(params: Record<string, unknown>): unknown {
+  const { id, ...attrs } = params;
+  return buildJsonApiBody("timesreport", attrs, id as string | undefined);
+}
 
 function formatTimesheetSummary(response: JsonApiResponse): string {
   const data = Array.isArray(response.data) ? response.data : [response.data];
@@ -188,4 +207,7 @@ Returns: Données JSON complètes de la feuille de temps (jours, heures, statut,
       };
     }
   );
+
+  // BoondManager expects PUT (not PATCH) on /times-reports.
+  registerUpdateTool(server, REPORT_OPTS, TimesReportUpdateSchema, buildTimesReportBody, { method: "PUT" });
 }

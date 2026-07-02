@@ -38,7 +38,7 @@ describe("createMcpServer", () => {
   it("returns an McpServer instance with the expected name", () => {
     const server = createMcpServer();
     expect(server).toBeDefined();
-    expect(SERVER_NAME).toBe("boondmanager-mcp-server");
+    expect(SERVER_NAME).toBe("boondmanager2-mcp-server");
   });
 
   it("exposes a non-empty list of registered domains", () => {
@@ -63,8 +63,7 @@ describe("SERVER_VERSION", () => {
     expect(SERVER_VERSION).toBe(pkg.version);
   });
 
-  it("is not the legacy hardcoded placeholder", () => {
-    expect(SERVER_VERSION).not.toBe("1.0.0");
+  it("is not the read-failure fallback placeholder", () => {
     expect(SERVER_VERSION).not.toBe("0.0.0-unknown");
   });
 });

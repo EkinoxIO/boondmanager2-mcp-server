@@ -80,7 +80,7 @@ jobs:
       - name: Publish to npm
         # `--tag <npm_tag>` ensures prereleases land under e.g. `@alpha`
         # rather than overwriting the default `latest` dist-tag and reaching
-        # users running `npm install boondmanager-mcp-server` without a tag.
+        # users running `npm install boondmanager2-mcp-server` without a tag.
         run: npm publish --provenance --access public --tag "${{ steps.version.outputs.npm_tag }}"
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
@@ -104,7 +104,7 @@ jobs:
           MCPB_CLI_VERSION: "2.1.2"
         run: |
           TAG_VERSION="${GITHUB_REF#refs/tags/v}"
-          npx --yes "@anthropic-ai/mcpb@${MCPB_CLI_VERSION}" pack . "boondmanager-mcp-server-v${TAG_VERSION}.mcpb"
+          npx --yes "@anthropic-ai/mcpb@${MCPB_CLI_VERSION}" pack . "boondmanager2-mcp-server-v${TAG_VERSION}.mcpb"
 
       - name: Extract release notes from CHANGELOG
         id: changelog
@@ -135,9 +135,9 @@ jobs:
       - name: Update server.json for MCP Registry
         run: |
           TAG_VERSION="${GITHUB_REF#refs/tags/v}"
-          MCPB_FILE="boondmanager-mcp-server-v${TAG_VERSION}.mcpb"
+          MCPB_FILE="boondmanager2-mcp-server-v${TAG_VERSION}.mcpb"
           MCPB_SHA256=$(sha256sum "$MCPB_FILE" | awk '{print $1}')
-          MCPB_URL="https://github.com/fauguste/boondmanager-mcp-server/releases/download/v${TAG_VERSION}/${MCPB_FILE}"
+          MCPB_URL="https://github.com/EkinoxIO/boondmanager2-mcp-server/releases/download/v${TAG_VERSION}/${MCPB_FILE}"
 
           jq \
             --arg ver "$TAG_VERSION" \
@@ -219,8 +219,8 @@ jobs:
           NUMERIC_VERSION="$(echo "$TAG_VERSION" | sed -E 's/-.*$//')"
           MAJOR_MINOR="$(echo "$NUMERIC_VERSION" | awk -F. '{print $1"."$2}')"
           MAJOR="$(echo "$NUMERIC_VERSION" | awk -F. '{print $1}')"
-          GHCR_REPO="ghcr.io/${{ github.repository_owner }}/boondmanager-mcp-server"
-          DOCKERHUB_REPO="${DOCKERHUB_USERNAME}/boondmanager-mcp-server"
+          GHCR_REPO="ghcr.io/${{ github.repository_owner }}/boondmanager2-mcp-server"
+          DOCKERHUB_REPO="${DOCKERHUB_USERNAME}/boondmanager2-mcp-server"
           # On a stable release we publish four moving tags per registry:
           #   :<exact>   pinned, the only tag we recommend in production manifests
           #   :<X.Y>     latest patch of a minor (auto-update inside a minor)
@@ -270,7 +270,7 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-          repository: ${{ secrets.DOCKERHUB_USERNAME }}/boondmanager-mcp-server
+          repository: ${{ secrets.DOCKERHUB_USERNAME }}/boondmanager2-mcp-server
           short-description: ${{ github.event.repository.description }}
           readme-filepath: ./README-docker.md
           enable-url-completion: true

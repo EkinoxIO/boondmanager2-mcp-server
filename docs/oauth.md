@@ -82,7 +82,7 @@ export MCP_HTTP_PORT=3000
 # Required when behind a reverse proxy so discovery advertises the
 # externally-reachable URL.
 export MCP_HTTP_PUBLIC_URL=https://mcp.example.com/mcp
-npx boondmanager-mcp-server
+npx boondmanager2-mcp-server
 ```
 
 That's it. The server is now:
@@ -144,7 +144,7 @@ docker run -d --restart unless-stopped \
   -p 127.0.0.1:3000:3000 \
   -e MCP_HTTP_PUBLIC_URL=https://mcp.example.com/mcp \
   --name boondmanager-mcp \
-  ghcr.io/fauguste/boondmanager-mcp-server:latest
+  ghcr.io/EkinoxIO/boondmanager2-mcp-server:latest
 ```
 
 No volume, no secret, no env var that you wouldn't paste into a Slack

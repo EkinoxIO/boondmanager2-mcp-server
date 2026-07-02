@@ -51,7 +51,7 @@ import { resolveAccessPolicy, isDomainAllowed, withPolicy, type AccessPolicy } f
 export { REGISTERED_DOMAINS } from "./constants.js";
 export type { DomainName } from "./constants.js";
 
-export const SERVER_NAME = "boondmanager-mcp-server";
+export const SERVER_NAME = "boondmanager2-mcp-server";
 
 /**
  * Read the package version from `package.json` so the value advertised over

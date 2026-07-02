@@ -8,8 +8,8 @@
 ## Installation
 
 ```bash
-git clone https://github.com/fauguste/boondmanager-mcp-server.git
-cd boondmanager-mcp-server
+git clone https://github.com/EkinoxIO/boondmanager2-mcp-server.git
+cd boondmanager2-mcp-server
 npm install
 ```
 

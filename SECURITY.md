@@ -7,15 +7,15 @@ authentication bypass, request smuggling, log poisoning, supply-chain risk,
 anything that could expose BoondManager data — please report it privately
 rather than opening a public issue.
 
-**Preferred channel** — open a [private security advisory on GitHub](https://github.com/fauguste/boondmanager-mcp-server/security/advisories/new).
+**Preferred channel** — open a [private security advisory on GitHub](https://github.com/EkinoxIO/boondmanager2-mcp-server/security/advisories/new).
 This keeps the discussion confidential until a fix ships.
 
 **Alternative** — email `frederic.auguste@gmail.com` with subject prefix
-`[boondmanager-mcp-server SECURITY]`. Include:
+`[boondmanager2-mcp-server SECURITY]`. Include:
 
 - A clear description of the issue and impact
 - Reproduction steps (commands, request payloads, environment)
-- The affected version (`boondmanager-mcp-server --version` or commit hash)
+- The affected version (`boondmanager2-mcp-server --version` or commit hash)
 - Whether the issue is already public anywhere
 
 We aim to acknowledge reports within **3 working days** and to ship a fix
@@ -37,7 +37,7 @@ back-patched — please upgrade.
 In scope:
 
 - The MCP server source code in this repository (`src/`)
-- The published npm package `boondmanager-mcp-server`
+- The published npm package `boondmanager2-mcp-server`
 - The `.mcpb` bundle attached to GitHub Releases
 - The Streamable HTTP transport (`src/transports/http.ts`)
 - The release pipeline (`.github/workflows/release.yml`)

@@ -4,9 +4,9 @@ on:
   workflow_dispatch:
     inputs:
       repository:
-        description: "Docker Hub repository (e.g., fauguste/boondmanager-mcp-server)"
+        description: "Docker Hub repository (e.g., EkinoxIO/boondmanager2-mcp-server)"
         required: true
-        default: "fauguste/boondmanager-mcp-server"
+        default: "EkinoxIO/boondmanager2-mcp-server"
 
 permissions:
   contents: read

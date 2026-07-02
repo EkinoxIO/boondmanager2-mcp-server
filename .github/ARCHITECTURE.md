@@ -371,4 +371,4 @@ Si le système devient insuffisant :
 
 **Version**: 1.0.0  
 **Date**: 2026-04-26  
-**Auteur**: @fauguste
+**Auteur**: @vlandeau

@@ -81,8 +81,8 @@ jobs:
           NUMERIC_VERSION="$(echo "$TAG_VERSION" | sed -E 's/-.*$//')"
           MAJOR_MINOR="$(echo "$NUMERIC_VERSION" | awk -F. '{print $1"."$2}')"
           MAJOR="$(echo "$NUMERIC_VERSION" | awk -F. '{print $1}')"
-          GHCR_REPO="ghcr.io/${{ github.repository_owner }}/boondmanager-mcp-server"
-          DOCKERHUB_REPO="${DOCKERHUB_USERNAME}/boondmanager-mcp-server"
+          GHCR_REPO="ghcr.io/${{ github.repository_owner }}/boondmanager2-mcp-server"
+          DOCKERHUB_REPO="${DOCKERHUB_USERNAME}/boondmanager2-mcp-server"
           {
             echo "tags<<EOF"
             echo "${GHCR_REPO}:${TAG_VERSION}"

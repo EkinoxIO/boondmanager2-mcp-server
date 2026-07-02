@@ -5,20 +5,26 @@ automatically by the release pipeline; a few require a one-time manual
 submission. This file is the trackable checklist for those manual bits, and
 the reference for what gets pushed where on each release.
 
+> **Fork note:** this document was carried over from the upstream project and
+> now points at `EkinoxIO/boondmanager2-mcp-server`. None of these listings
+> (npm, MCP Registry, Docker Hub/GHCR, LobeHub, Smithery, Glama, ...) exist yet
+> under the new name — each one requires its own first-time publish/submission
+> before the URLs below resolve to anything real.
+
 ## Where it ships
 
 | Channel | URL / Identifier | Sync mechanism | Frequency |
 |---|---|---|---|
-| **npm** | [`boondmanager-mcp-server`](https://www.npmjs.com/package/boondmanager-mcp-server) | `npm publish --provenance` step in `release.yml` | every `v*` tag |
-| **MCP Registry** | [`io.github.fauguste/boondmanager-mcp-server`](https://registry.modelcontextprotocol.io/) | `mcp-publisher publish` in `release.yml` (GitHub OIDC) | every `v*` tag |
-| **GitHub Releases (.mcpb bundle)** | [releases page](https://github.com/fauguste/boondmanager-mcp-server/releases) | `softprops/action-gh-release@v3` in `release.yml`; body sourced from `CHANGELOG.md` | every `v*` tag |
-| **GitHub Container Registry** | `ghcr.io/fauguste/boondmanager-mcp-server` | `docker/build-push-action@v6` in `release.yml`; multi-arch (amd64+arm64), tags `:latest`, `:X`, `:X.Y`, `:X.Y.Z` | every `v*` tag |
-| **LobeHub MCP marketplace** | [fauguste-boondmanager-mcp-server](https://lobehub.com/mcp/fauguste-boondmanager-mcp-server) | mirrors the MCP Registry (auto, ~24-48 h delay) | per release |
-| **Smithery** | [smithery.ai listing](https://smithery.ai/server/@fauguste/boondmanager-mcp-server) | reads `smithery.yaml` from this repo | per push to `main` |
-| **Gemini CLI extension** | `gemini extensions install https://github.com/fauguste/boondmanager-mcp-server` | reads `gemini-extension.json` from repo root | on install (reads the default branch) |
+| **npm** | [`boondmanager2-mcp-server`](https://www.npmjs.com/package/boondmanager2-mcp-server) | `npm publish --provenance` step in `release.yml` | every `v*` tag |
+| **MCP Registry** | [`io.github.EkinoxIO/boondmanager2-mcp-server`](https://registry.modelcontextprotocol.io/) | `mcp-publisher publish` in `release.yml` (GitHub OIDC) | every `v*` tag |
+| **GitHub Releases (.mcpb bundle)** | [releases page](https://github.com/EkinoxIO/boondmanager2-mcp-server/releases) | `softprops/action-gh-release@v3` in `release.yml`; body sourced from `CHANGELOG.md` | every `v*` tag |
+| **GitHub Container Registry** | `ghcr.io/EkinoxIO/boondmanager2-mcp-server` | `docker/build-push-action@v6` in `release.yml`; multi-arch (amd64+arm64), tags `:latest`, `:X`, `:X.Y`, `:X.Y.Z` | every `v*` tag |
+| **LobeHub MCP marketplace** | [EkinoxIO-boondmanager2-mcp-server](https://lobehub.com/mcp/EkinoxIO-boondmanager2-mcp-server) | mirrors the MCP Registry (auto, ~24-48 h delay) | per release |
+| **Smithery** | [smithery.ai listing](https://smithery.ai/server/@EkinoxIO/boondmanager2-mcp-server) | reads `smithery.yaml` from this repo | per push to `main` |
+| **Gemini CLI extension** | `gemini extensions install https://github.com/EkinoxIO/boondmanager2-mcp-server` | reads `gemini-extension.json` from repo root | on install (reads the default branch) |
 | **One-click badges (Cursor, VS Code, VS Code Insiders)** | deeplinks in `README.md` (no package) | hosted HTTPS redirects (`cursor.com/install-mcp`, `insiders.vscode.dev/redirect/mcp/install`) with base64/url-encoded `npx` config — clickable on github.com | manual (only if the `npx` invocation changes) |
 | **LM Studio / Goose** | install sections in `README.md` (no package) | native `lmstudio://` / `goose://` deeplinks are stripped by GitHub, so these are documented as copy-paste config instead of badges | manual |
-| **Glama listing badge** | [Glama](https://glama.ai/mcp/servers/fauguste/boondmanager-mcp-server) | live `/badge` PNG, embedded via `<img width>` to keep it compact. Smithery has no usable README badge (their badge endpoint is WAF-gated), so only the listing channel row above is kept | auto |
+| **Glama listing badge** | [Glama](https://glama.ai/mcp/servers/EkinoxIO/boondmanager2-mcp-server) | live `/badge` PNG, embedded via `<img width>` to keep it compact. Smithery has no usable README badge (their badge endpoint is WAF-gated), so only the listing channel row above is kept | auto |
 
 ## One-time setup (manual)
 
@@ -32,7 +38,7 @@ discover the project. Set them with the GitHub CLI — re-running is safe and
 overwrites the previous list:
 
 ```bash
-gh repo edit fauguste/boondmanager-mcp-server \
+gh repo edit EkinoxIO/boondmanager2-mcp-server \
   --add-topic mcp \
   --add-topic mcp-server \
   --add-topic model-context-protocol \
@@ -52,7 +58,7 @@ Open a PR adding the entry under the *Business / CRM* category to
 [`punkpeye/awesome-mcp-servers`](https://github.com/punkpeye/awesome-mcp-servers):
 
 ```markdown
-- [fauguste/boondmanager-mcp-server](https://github.com/fauguste/boondmanager-mcp-server) - MCP server for the BoondManager API (ERP/CRM for staffing companies). 156 tools, 6 prompts, 19 resources.
+- [EkinoxIO/boondmanager2-mcp-server](https://github.com/EkinoxIO/boondmanager2-mcp-server) - MCP server for the BoondManager API (ERP/CRM for staffing companies). 156 tools, 6 prompts, 19 resources.
 ```
 
 ### 3. Glama MCP catalogue
@@ -78,12 +84,12 @@ only act if the auto-mirror hasn't picked us up.
 After every `v*` tag is pushed and the Release workflow turns green, take 2
 minutes to spot-check the distribution surface:
 
-1. **npm** — `npm view boondmanager-mcp-server version` matches the tag.
-2. **MCP Registry** — the new version is listed at `https://registry.modelcontextprotocol.io/v0/servers/io.github.fauguste/boondmanager-mcp-server`.
+1. **npm** — `npm view boondmanager2-mcp-server version` matches the tag.
+2. **MCP Registry** — the new version is listed at `https://registry.modelcontextprotocol.io/v0/servers/io.github.EkinoxIO/boondmanager2-mcp-server`.
 3. **GitHub Release** — the body matches the `## [X.Y.Z]` section of `CHANGELOG.md` and the `.mcpb` asset is attached.
-4. **GHCR** — `docker pull ghcr.io/fauguste/boondmanager-mcp-server:<tag>` succeeds; `docker manifest inspect` shows both `linux/amd64` and `linux/arm64`.
-5. **LobeHub** — within ~48 h, `https://lobehub.com/mcp/fauguste-boondmanager-mcp-server` shows the new description / changelog. If not, it's safe to ignore (LobeHub re-scans on its own cadence).
-6. **Smithery** — `https://smithery.ai/server/@fauguste/boondmanager-mcp-server` reflects the latest `smithery.yaml`. Smithery refreshes on every push to `main`, not per tag.
+4. **GHCR** — `docker pull ghcr.io/EkinoxIO/boondmanager2-mcp-server:<tag>` succeeds; `docker manifest inspect` shows both `linux/amd64` and `linux/arm64`.
+5. **LobeHub** — within ~48 h, `https://lobehub.com/mcp/EkinoxIO-boondmanager2-mcp-server` shows the new description / changelog. If not, it's safe to ignore (LobeHub re-scans on its own cadence).
+6. **Smithery** — `https://smithery.ai/server/@EkinoxIO/boondmanager2-mcp-server` reflects the latest `smithery.yaml`. Smithery refreshes on every push to `main`, not per tag.
 
 ## Adding a new distribution channel
 
