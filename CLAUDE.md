@@ -109,6 +109,33 @@ the file server-side; the MCP server never reads local files), with
 `parsing: true` to trigger Boond's AI resume parsing on `candidateResume`.
 Delete goes through the factory (elicitation + structuredContent).
 
+**Timesheet update / row merge** (`src/tools/timesheet-merge.ts`): two Boond
+behaviours shape this. (1) A timesheet is a set of *activity lines* (`row` =
+`TAB_LIGNETEMPS`) each holding one entry per day (`id` = `TAB_TEMPS`); a line is
+keyed by `workUnitType.reference|delivery|batch|project` and a `row <= -1`
+always creates a new line, so a caller that doesn't know the row numbers
+duplicates activities. (2) **`attributes.regularTimes` replaces the whole
+collection** — sending one entry means the timesheet now has exactly one entry.
+Confirmed destructively against a live CRA: a one-entry PUT deleted 20 entries
+across 4 lines.
+
+`boond_timesheets_update` therefore always `GET /times-reports/{id}` first and
+PUTs the **union** via `buildRegularTimesPayload()`: every stored entry mapped
+back to body shape (`toPutRegularTime()` strips the read-only decoration —
+`calendar`, relation titles, `workUnitType.activityType`/`name`), with the
+caller's entries merged on top — same activity reuses the existing `row`, same
+activity+day reuses the entry `id` so the incoming duration **replaces** the
+stored one, a genuinely new activity gets a fresh distinct negative `row`.
+`row >= 1` from the caller is honoured verbatim but **never** skips the read
+(`requiresReadBeforeWrite()` is a data-loss guard, not an optimisation), and a
+failed read **aborts the update** instead of falling back to passthrough.
+`exceptionalTimes` get the same union treatment; collections the caller omits
+are echoed back (`existingCollection()`) since only `regularTimes` is proven
+safe to omit. Stored entries with no addressable `row` are counted as `dropped`
+and surfaced in the tool output rather than silently re-created. This is why the
+tool is registered directly instead of through `registerUpdateTool` — the
+factory's `buildBody` hook is sync.
+
 **Error formatting** (`src/services/boond-client.ts`): non-2xx responses
 are surfaced through `formatApiError()` which uses
 `parseBoondErrorBody()` to extract `errors[].detail` from BoondManager's
@@ -221,7 +248,7 @@ schema rejection rather than a silently unfiltered result.
      the right tool names and filter shortcuts
   5. For resources: read callback hits the expected API path
 - **Coverage**: V8 provider, excludes test files and index.ts
-- **Current stats**: 54 test files, **735 tests**
+- **Current stats**: 55 test files, **775 tests**
 
 ### Test file template (for read-only search+get domains):
 

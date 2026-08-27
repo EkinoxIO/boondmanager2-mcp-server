@@ -341,7 +341,7 @@ Hint legend: `read` (readOnlyHint), `write` (creates/updates), `delete` (destruc
 | `boond_timesheets_create` | Créer une feuille de temps | write |
 | `boond_timesheets_get` | Détails d'une feuille de temps | read · idempotent |
 | `boond_timesheets_search` | Rechercher des feuilles de temps | read · idempotent · open-world |
-| `boond_timesheets_update` | Modifier un(e) feuille de temps | write · idempotent |
+| `boond_timesheets_update` | Modifier une feuille de temps | write · idempotent |
 
 ### todolists (2)
 

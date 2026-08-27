@@ -1015,11 +1015,17 @@ const timesReportDateSchema = z
   .regex(/^$|^\d{4}-\d{2}-\d{2}$/)
   .describe("Date au format YYYY-MM-DD");
 
-// `row`: >=1 met à jour la ligne existante, <=-1 en crée une nouvelle (0 est interdit par l'API).
-const timesReportRowSchema = z.union([
-  z.number().int().min(1).describe("Met à jour cette ligne existante"),
-  z.number().int().max(-1).describe("Crée une nouvelle ligne"),
-]);
+// `row`: >=1 cible la ligne d'activité existante, <=-1 en crée une nouvelle
+// (0 est interdit par l'API). Optionnel côté MCP : omis, le serveur le résout
+// en relisant la feuille de temps et réutilise la ligne de la même activité
+// (workUnitType + delivery + batch + project) au lieu d'en créer un doublon.
+const timesReportRowSchema = z
+  .union([
+    z.number().int().min(1).describe("Cible cette ligne d'activité existante"),
+    z.number().int().max(-1).describe("Force la création d'une nouvelle ligne"),
+  ])
+  .optional()
+  .describe("Laisser vide pour que le serveur réutilise la ligne de la même activité si elle existe");
 
 const regularTimeBaseShape = {
   startDate: timesReportDateSchema,
